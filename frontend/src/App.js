@@ -2,6 +2,7 @@ import { useState } from "react";
 import WeatherForm from "./components/WeatherForm";
 import WeatherResult from "./components/WeatherResult";
 import { getWeatherData, getOutfitSuggestion } from "./services/api";
+import "./index.css";
 
 const App = () => {
   const [weather, setWeather] = useState(null);
@@ -25,8 +26,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-6 bg-gray-100">
-      <h1 className="text-2xl font-bold mb-4">Weather-Based Outfit Suggestion</h1>
+    <div>
       <WeatherForm onSearch={handleSearch} />
       <WeatherResult weather={weather} outfit={outfit} />
     </div>

@@ -11,18 +11,18 @@ const WeatherForm = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 bg-white shadow-lg rounded-lg">
-      <input
-        type="text"
-        placeholder="Enter city name"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        className="p-2 border rounded w-full"
-      />
-      <button type="submit" className="mt-2 p-2 bg-blue-500 text-white w-full rounded">
-        Get Outfit Suggestion
-      </button>
-    </form>
+    <div className="container">
+      <h1>Weather-Based Outfit Suggestion</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter city..."
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button type="submit">Get Suggestion</button>
+      </form>
+    </div>
   );
 };
 
