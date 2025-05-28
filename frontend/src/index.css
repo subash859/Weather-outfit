@@ -1,73 +1,211 @@
 body {
   font-family: "Poppins", sans-serif;
-  background: #f4f4f4;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   margin: 0;
   padding: 0;
   color: #333;
+  min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.form-container, .result-container {
+  width: 100%;
+  max-width: 550px;
+  margin: 1rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.form-container {
   text-align: center;
 }
 
-.container {
-  max-width: 500px;
-  margin: 50px auto;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
 h1 {
-  font-size: 26px;
+  font-size: 1.8rem;
   font-weight: 600;
-  color: #1e3a8a;
-  margin-bottom: 20px;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
 }
 
-input {
-  width: 80%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 15px;
-  font-size: 16px;
+.input-group {
+  display: flex;
+  gap: 0.5rem;
 }
 
-button {
-  background: #2563eb;
+.city-input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.city-input:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.search-button {
+  background: #3b82f6;
   color: white;
   border: none;
-  padding: 12px 16px;
-  font-size: 16px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-button:hover {
-  background: #1e3a8a;
+.search-button:hover {
+  background: #1d4ed8;
 }
 
-.weather-info {
-  margin-top: 20px;
-  font-size: 18px;
+.search-button:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+.weather-section {
+  text-align: center;
 }
 
 .weather-icon {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 10px;
+  width: 100px;
+  height: 100px;
+  margin: 1rem 0;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.weather-details {
+  margin: 1rem 0;
+}
+
+.weather-description {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: #4b5563;
 }
 
 .outfit-container {
-  margin-top: 20px;
-  padding: 15px;
-  background: #eef2ff;
-  color: #1e3a8a;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f0f9ff;
+  border-radius: 12px;
+  text-align: center;
+  border-top: 4px solid #3b82f6;
+}
+
+.accessories-container {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #e0f2fe;
   border-radius: 8px;
 }
 
-.outfit-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 8px;
+.accessories-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
+
+.accessory-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  text-align: center;
+}
+
+.accessory-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.accessory-emoji {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.outfit-emoji {
+  font-size: 4rem;
+  margin: 1rem auto;
+  text-align: center;
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 180px;
+}
+
+.outfit-suggestion {
+  font-size: 1.1rem;
+  color: #1e40af;
+  font-weight: 500;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: #f0f9ff;
+  border-radius: 6px;
+  border-left: 3px solid #3b82f6;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: center;
+  max-width: 550px;
+  width: 100%;
+}
+
+.loading {
+  position: relative;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-weight: 500;
+  color: #3b82f6;
+}
+
+@media (max-width: 600px) {
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .search-button {
+    width: 100%;
+  }
+}
+
+
+
+
+

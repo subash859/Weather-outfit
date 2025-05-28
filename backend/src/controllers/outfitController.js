@@ -8,10 +8,19 @@ const suggestOutfit = async (req, res) => {
       return res.status(400).json({ error: "Temperature, humidity, and wind speed are required" });
     }
 
-    const outfit = await predictOutfit(temp, humidity, wind_speed);
-    res.json({ temperature: temp, humidity, wind_speed, suggestion: outfit });
+    const outfitData = await predictOutfit(temp, humidity, wind_speed);
+    
+    res.json({
+      temperature: parseFloat(temp),
+      humidity: parseFloat(humidity),
+      wind_speed: parseFloat(wind_speed),
+      season: outfitData.season,
+      suggestion: outfitData.outfit,
+      accessories: outfitData.accessories
+    });
   } catch (error) {
-    res.status(500).json({ error: "ML prediction failed" });
+    console.error("ML prediction error:", error);
+    res.status(500).json({ error: "ML prediction failed", details: error.toString() });
   }
 };
 
